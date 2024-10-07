@@ -4,11 +4,11 @@
 //define relevant pins
 
 //countdown red LED
-#define countDown 2
+#define countDown 4
 
 //charge pin
 
-#define charge 11
+#define charge 7
 
 
 
