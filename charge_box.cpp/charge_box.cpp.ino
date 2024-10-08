@@ -4,11 +4,11 @@
 //define relevant pins
 
 //countdown red LED
-#define countDown 4
+#define countDown 7
 
 //charge pin
 
-#define charge 7
+#define charge 10
 
 
 
@@ -39,19 +39,25 @@ void setup() {
 }
 
 void loop() {
-  currentTime = millis();
 
-  for (int i = 0; i < countdown; i++) {
+  delay(15);
+  digitalWrite(charge, HIGH); 
+  digitalWrite(countDown, HIGH); 
+  printf("Yay! ");
+  // currentTime = millis();
+  // printf(currentTime); 
 
-     unsigned long desiredTime = currentTime + i;
-    if (desiredTime >= currentTime) {
-      digitalWrite(countDown, HIGH);
-    }
-    digitalWrite(countDown, LOW);
-  }
+  // for (int i = 0; i < countdown; i++) {
 
-  if (currentTime >= lightupTime) {
-    digitalWrite(countDown, HIGH);
-    digitalWrite(charge, HIGH);
-  }
+  //    unsigned long desiredTime = currentTime + i;
+  //   if (desiredTime >= currentTime) {
+  //     digitalWrite(countDown, HIGH);
+  //   }
+  //   digitalWrite(countDown, LOW);
+  // }
+
+  // if (currentTime >= lightupTime) {
+  //   digitalWrite(countDown, HIGH);
+  //   digitalWrite(charge, HIGH);
+  // }
 }
