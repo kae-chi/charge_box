@@ -48,10 +48,6 @@ void loop() {
 
 
 
- 
-   currentTime = millis();
-
-
   if (currentTime >= lightupTime && litUp == -1) {
    
     digitalWrite(charge, HIGH);
