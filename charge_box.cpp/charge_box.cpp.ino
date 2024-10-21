@@ -4,7 +4,7 @@
 //define relevant pins
 
 //countdown red LED
-#define countDown 7
+#define countDown 3
 
 //charge pin
 
@@ -18,7 +18,13 @@
 unsigned long currentTime;
 unsigned long beginningTime;
 unsigned long lightupTime;
-int countdown = 15;
+int blinkInterval = 1000; 
+int countdown = 15000;
+unsigned long  previousBlinkTime;
+
+
+int litUp = -1; 
+bool isBlinkingOn = false; 
 
 
 
@@ -32,32 +38,34 @@ void setup() {
   digitalWrite(charge, LOW);
 
 
-
-
   beginningTime = millis();
   lightupTime = beginningTime + countdown;
 }
 
 void loop() {
 
-  delay(15);
-  digitalWrite(charge, HIGH); 
-  digitalWrite(countDown, HIGH); 
-  printf("Yay! ");
-  // currentTime = millis();
-  // printf(currentTime); 
+  currentTime = millis(); 
 
-  // for (int i = 0; i < countdown; i++) {
 
-  //    unsigned long desiredTime = currentTime + i;
-  //   if (desiredTime >= currentTime) {
-  //     digitalWrite(countDown, HIGH);
-  //   }
-  //   digitalWrite(countDown, LOW);
-  // }
 
-  // if (currentTime >= lightupTime) {
-  //   digitalWrite(countDown, HIGH);
-  //   digitalWrite(charge, HIGH);
-  // }
+ 
+   currentTime = millis();
+
+
+  if (currentTime >= lightupTime && litUp == -1) {
+   
+    digitalWrite(charge, HIGH);
+    litUp = 1; 
+  }
+
+   if (currentTime - previousBlinkTime >= blinkInterval && litUp == -1) {
+    isBlinkingOn = !isBlinkingOn;
+    digitalWrite(countDown, isBlinkingOn ? HIGH : LOW);
+    previousBlinkTime = currentTime; 
+   }
 }
+
+
+
+
+
