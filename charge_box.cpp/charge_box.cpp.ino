@@ -18,7 +18,7 @@
 unsigned long currentTime;
 unsigned long beginningTime;
 unsigned long lightupTime;
-int blinkInterval = 1000; 
+int blinkInterval = 500; 
 int countdown = 15000;
 unsigned long  previousBlinkTime;
 
