@@ -1,14 +1,11 @@
-#include <SPI.h>
-#include <SD.h>
 
-//define relevant pins
 
-//countdown red LED
-#define countDown 3
+//COUNTDOWN red LED
+#define COUNTDOWN 3
 
-//charge pin
+//CHARGE pin
 
-#define charge 10
+#define CHARGE 10
 
 
 
@@ -19,11 +16,11 @@ unsigned long currentTime;
 unsigned long beginningTime;
 unsigned long lightupTime;
 int blinkInterval = 500; 
-int countdown = 15000;
+int COUNTDOWN = 15000;
 unsigned long  previousBlinkTime;
 
 
-int litUp = -1; 
+int lightUp = -1; 
 bool isBlinkingOn = false; 
 
 
@@ -31,15 +28,15 @@ bool isBlinkingOn = false;
 
 void setup() {
 
-  pinMode(countDown, OUTPUT);
-  digitalWrite(countDown, LOW);
+  pinMode(COUNTDOWN, OUTPUT);
+  digitalWrite(COUNTDOWN, LOW);
 
-  pinMode(charge, OUTPUT);
-  digitalWrite(charge, LOW);
+  pinMode(CHARGE, OUTPUT);
+  digitalWrite(CHARGE, LOW);
 
 
   beginningTime = millis();
-  lightupTime = beginningTime + countdown;
+  lightupTime = beginningTime + COUNTDOWN;
 }
 
 void loop() {
@@ -48,15 +45,15 @@ void loop() {
 
 
 
-  if (currentTime >= lightupTime && litUp == -1) {
+  if (currentTime >= lightupTime && lightUp == -1) {
    
-    digitalWrite(charge, HIGH);
-    litUp = 1; 
+    digitalWrite(CHARGE, HIGH);
+    lightUp = 1; 
   }
 
-   if (currentTime - previousBlinkTime >= blinkInterval && litUp == -1) {
+   if (currentTime - previousBlinkTime >= blinkInterval && lightUp == -1) {
     isBlinkingOn = !isBlinkingOn;
-    digitalWrite(countDown, isBlinkingOn ? HIGH : LOW);
+    digitalWrite(COUNTDOWN, isBlinkingOn ? HIGH : LOW);
     previousBlinkTime = currentTime; 
    }
 }
